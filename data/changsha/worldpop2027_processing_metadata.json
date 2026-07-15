@@ -1,0 +1,19 @@
+{
+  "source_file": "chn_pop_2027_CN_1km_R2025A_UA_v1.tif",
+  "year": 2027,
+  "product": "WorldPop Global 2 / R2025A",
+  "resolution": "1km",
+  "crs": "EPSG:4326",
+  "population_unit": "persons per raster cell",
+  "method": {
+    "maximum_station_service_distance_m": 1000,
+    "subgrid_per_raster_cell": "10x10",
+    "physical_complex_threshold_m": 100,
+    "explicit_zero_weight_transfers_grouped": true,
+    "complex_population_split_between_member_nodes": true
+  },
+  "results": {
+    "base_served_population": 3127338.464563599,
+    "expanded_served_population": 3516843.5132321166
+  }
+}
