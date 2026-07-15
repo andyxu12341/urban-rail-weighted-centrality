@@ -37,7 +37,11 @@ C_i^W=\frac{\sum_j W_j}{\sum_j W_j d_{ij}}=\frac{1}{\bar d_i^W}
 | 4 | Lexington Av–53 St / 51 St | 5.447 | 0.183579 |
 | 5 | 34 St–Herald Sq | 5.449 | 0.183504 |
 
-Full result: [`results/new_york/nyc_full_closeness_and_ridership_results.csv`](results/new_york/nyc_full_closeness_and_ridership_results.csv)
+Complete 423-complex ranking:
+
+- [`ranks 1–150`](results/new_york/nyc_passenger_weighted_ranking_001_150.csv)
+- [`ranks 151–300`](results/new_york/nyc_passenger_weighted_ranking_151_300.csv)
+- [`ranks 301–423`](results/new_york/nyc_passenger_weighted_ranking_301_423.csv)
 
 ### Changsha–Zhuzhou–Xiangtan — population-weighted kilometre centrality
 
@@ -49,7 +53,7 @@ Full result: [`results/new_york/nyc_full_closeness_and_ridership_results.csv`](r
 | 4 | 黄兴广场 | Metro | 10.011 | 0.099885 |
 | 5 | 长沙火车站 | Metro | 10.084 | 0.099171 |
 
-Full result: [`results/changsha/czt_population_weighted_km_results.csv`](results/changsha/czt_population_weighted_km_results.csv)
+Complete 165-node result: [`results/changsha/czt_population_weighted_km_results.csv`](results/changsha/czt_population_weighted_km_results.csv)
 
 ## Repository layout
 
@@ -58,10 +62,10 @@ Full result: [`results/changsha/czt_population_weighted_km_results.csv`](results
 ├── docs/                       Methodology and source notes
 ├── src/urban_rail_centrality/  Reusable Python algorithms
 ├── scripts/                    Recompute and verification commands
-├── data/changsha/              Reproducible Changsha/CZT inputs
-├── data/new_york/              NYC source instructions
-├── results/                    Machine-readable complete rankings
-└── artifacts/                  Excel deliverables
+├── data/changsha/              Changsha/CZT graph and population inputs
+├── results/new_york/           Complete 423-complex NYC ranking
+├── results/changsha/           Complete 165-node CZT result
+└── tests/                       Algorithm tests
 ```
 
 ## Recompute the Changsha/CZT result
@@ -79,13 +83,13 @@ outputs/czt_population_weighted_km_results.csv
 
 ## Verify the NYC published result
 
-The repository contains the complete 423-complex result table but not redistributed MTA source extracts. You can verify ranking and inverse-distance identities with:
+The repository contains the complete 423-complex ranking, split into three CSV files for convenient browsing. The raw MTA source extract is not redistributed.
 
 ```bash
 python scripts/verify_nyc_results.py
 ```
 
-See [`docs/new_york_method.md`](docs/new_york_method.md) for full reconstruction sources.
+See [`docs/new_york_method.md`](docs/new_york_method.md) for reconstruction sources and [`docs/methodology.md`](docs/methodology.md) for the common formulas.
 
 ## Interpretation
 
@@ -99,5 +103,5 @@ This metric is **destination-weighted accessibility**, not observed origin–des
 ## Licensing
 
 - Code: MIT License.
-- Derived result tables: CC BY 4.0, subject to attribution of the original public data providers.
+- Derived result tables: intended for research reuse with attribution to the original public data providers.
 - Source datasets retain their original terms; large raw WorldPop and MTA source files are not redistributed here.
