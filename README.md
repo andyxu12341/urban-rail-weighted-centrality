@@ -5,7 +5,7 @@ A reproducible comparison of demand-weighted closeness centrality for two urban 
 1. **New York City Subway** — station-hop distance weighted by average monthly ridership.
 2. **Changsha / Changsha–Zhuzhou–Xiangtan rail network** — network-kilometre distance weighted by WorldPop 2027 station-service population.
 
-本仓库整理纽约地铁与长沙—长株潭轨道网络的接近中心性计算方法、可运行算法和完整结果。
+本仓库整理纽约地铁与长沙—长株潭轨道网络的接近中心性计算方法、可运行算法、完整结果，以及可复用的 OSM/Wiki—线网建立—中心度分析 Skills。
 
 ## Core formula
 
@@ -55,10 +55,34 @@ Complete 423-complex ranking:
 
 Complete 165-node result: [`results/changsha/czt_population_weighted_km_results.csv`](results/changsha/czt_population_weighted_km_results.csv)
 
+## Reusable Skills
+
+The complete process is packaged into four composable skills under [`skills/`](skills/README.md):
+
+1. [`osm-wiki-source-collection`](skills/osm-wiki-source-collection/SKILL.md)  
+   Collect and reconcile OSM, operator, Wikipedia and Wikidata station/route information.
+2. [`rail-network-construction`](skills/rail-network-construction/SKILL.md)  
+   Build graph scenarios, service/transfer edges and shortest-path matrices.
+3. [`rail-centrality-analysis`](skills/rail-centrality-analysis/SKILL.md)  
+   Calculate ordinary and population/ridership-weighted centrality using hops, kilometres or time.
+4. [`urban-rail-centrality-pipeline`](skills/urban-rail-centrality-pipeline/SKILL.md)  
+   Orchestrate the full public-data workflow from a city name to reproducible rankings.
+
+```text
+OSM / Wiki / official sources
+→ audited station and route tables
+→ rail graph and transfer model
+→ shortest-path matrices
+→ ordinary centrality
+→ population/ridership weighting
+→ complete rankings and reproducible artifacts
+```
+
 ## Repository layout
 
 ```text
 .
+├── skills/                     Reusable workflow skills
 ├── docs/                       Methodology and source notes
 ├── src/urban_rail_centrality/  Reusable Python algorithms
 ├── scripts/                    Recompute and verification commands
